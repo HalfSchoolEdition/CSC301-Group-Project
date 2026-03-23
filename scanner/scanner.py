@@ -8,14 +8,15 @@ from datetime import datetime
 from collections import defaultdict, deque
 from config import Config
 
+BACKEND_URL = 'http://127.0.0.1:5000/reports/bluetoothscanner/'
+
 def rssi_from_range(range):
     return Config.TX_POWER - (10 * Config.PATH_LOSS_EXPONENT * math.log10(range))
 
 def send_data(args, num_devices):
     payload = {
         "id": args.id,
-        "timestamp": datetime.utcnow().isoformat(),
-        "category": args.category,
+        "title": args.category,
         "num_devices": num_devices,
     }
 
