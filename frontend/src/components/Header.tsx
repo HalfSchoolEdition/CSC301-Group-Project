@@ -37,27 +37,27 @@ export default function Header({ backHref = '/', backLabel = '← Back' }: Heade
 
     if (loading) {
         return (
-            <header className="flex items-center justify-between bg-white p-6 text-gray-900 shadow dark:bg-zinc-900 dark:text-zinc-100">
-                <span>Loading...</span>
+            <header className="relative z-20 flex items-center justify-between border-b border-cyan-300/20 bg-[radial-gradient(circle_at_25%_35%,#1d4ed8_0%,#0b3a91_45%,#001a45_100%)] p-6 text-white shadow-lg shadow-blue-950/40 backdrop-blur-xl">
+                <span className="text-white/90">Loading...</span>
                 <ThemeToggle />
             </header>
         );
     }
 
     return (
-        <header className="flex items-center justify-between bg-white p-6 shadow dark:bg-zinc-900 dark:shadow-zinc-950/50">
+        <header className="relative z-20 flex items-center justify-between border-b border-cyan-300/20 bg-[radial-gradient(circle_at_25%_35%,#1d4ed8_0%,#0b3a91_45%,#001a45_100%)] p-6 shadow-lg shadow-blue-950/40 backdrop-blur-xl">
             <div className="flex items-center gap-4">
                 {pathname !== '/' && (
                     <button
                         onClick={goToHomePage}
-                        className="font-medium text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
+                        className="rounded-md px-2 py-1 font-medium text-white/85 transition-all hover:bg-white/10 hover:text-cyan-200"
                     >
                         {backLabel}
                     </button>
                 )}
 
-                <h1 className="text-2xl font-bold text-gray-900 dark:text-zinc-100">
-                    Dashboard
+                <h1 className="font-display pb-0.5 text-xl leading-[1.3] text-white sm:text-2xl">
+                    UTM CampusApp
                 </h1>
             </div>
 
@@ -66,14 +66,14 @@ export default function Header({ backHref = '/', backLabel = '← Back' }: Heade
                 {user == null ? (
                     <button
                         onClick={() => router.push('/signin')}
-                        className="rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600"
+                        className="rounded-lg border border-white/25 bg-white/10 px-4 py-2 text-white shadow-sm backdrop-blur transition-all hover:border-white/35 hover:bg-white/15 active:scale-[0.98]"
                     >
                         Sign In
                     </button>
                 ) : (
                     <button
                         onClick={handleLogout}
-                        className="rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600"
+                        className="rounded-lg border border-white/25 bg-white/10 px-4 py-2 text-white shadow-sm backdrop-blur transition-all hover:border-white/35 hover:bg-white/15 active:scale-[0.98]"
                     >
                         Sign Out
                     </button>

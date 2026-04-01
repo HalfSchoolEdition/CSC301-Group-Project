@@ -170,16 +170,19 @@ export default function LostAndFound() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 dark:bg-zinc-950">
+    <div className="relative min-h-screen overflow-hidden bg-slate-100 dark:bg-[#0b0c10]">
+      <div className="pointer-events-none absolute -left-20 -top-16 h-80 w-80 rounded-full bg-white/70 blur-3xl dark:bg-white/10" />
+      <div className="pointer-events-none absolute right-0 top-24 h-96 w-96 rounded-full bg-slate-300/35 blur-3xl dark:bg-zinc-600/15" />
+      <div className="pointer-events-none absolute bottom-0 left-1/3 h-72 w-72 rounded-full bg-slate-200/40 blur-3xl dark:bg-zinc-500/10" />
       <Header />
 
-      <div className="max-w-6xl mx-auto p-6 space-y-6">
+      <div className="relative z-10 max-w-6xl mx-auto p-6 space-y-6">
         {/* Header */}
         <div className="flex justify-between items-center">
-          <h1 className="text-4xl font-bold text-gray-800 dark:text-zinc-100">Lost & Found</h1>
+          <h1 className="font-display text-4xl font-bold bg-gradient-to-r from-cyan-500 to-blue-500 bg-clip-text text-transparent">Lost & Found</h1>
           <button
             onClick={() => setShowModal(true)}
-            className="bg-blue-600 text-white px-5 py-2 rounded-xl hover:bg-blue-700 shadow"
+            className="border border-slate-300 bg-white/65 text-slate-800 px-5 py-2 rounded-xl hover:border-transparent hover:bg-gradient-to-r hover:from-cyan-500 hover:to-indigo-500 hover:text-white shadow-sm transition-all dark:border-white/15 dark:bg-white/5 dark:text-zinc-100"
           >
             + New Item
           </button>
@@ -193,30 +196,30 @@ export default function LostAndFound() {
             return (
               <div
                 key={item.id}
-                className="break-inside-avoid bg-white dark:bg-zinc-900 rounded-2xl shadow-md p-4 hover:shadow-lg cursor-pointer border border-transparent dark:border-zinc-800"
+                className="break-inside-avoid bg-white/70 dark:bg-zinc-900/60 rounded-3xl shadow-sm p-4 hover:shadow-md cursor-pointer border border-slate-200/80 dark:border-white/10 backdrop-blur"
                 onClick={() => toggleComments(item.id)}
               >
                 {editingId === item.id ? (
                   <div className="space-y-2">
                     <input
-                      className="border dark:border-zinc-700 bg-white dark:bg-zinc-950 text-gray-900 dark:text-zinc-100 rounded px-2 py-1 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="border border-slate-300 dark:border-zinc-700 bg-white/80 dark:bg-zinc-950/80 text-slate-900 dark:text-zinc-100 rounded px-2 py-1 w-full focus:outline-none focus:ring-2 focus:ring-cyan-500"
                       value={editItem}
                       onChange={(e) => setEditItem(e.target.value)}
                     />
                     <textarea
-                      className="border dark:border-zinc-700 bg-white dark:bg-zinc-950 text-gray-900 dark:text-zinc-100 rounded px-2 py-1 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="border border-slate-300 dark:border-zinc-700 bg-white/80 dark:bg-zinc-950/80 text-slate-900 dark:text-zinc-100 rounded px-2 py-1 w-full focus:outline-none focus:ring-2 focus:ring-cyan-500"
                       value={editDesc}
                       onChange={(e) => setEditDesc(e.target.value)}
                     />
                     <div className="flex gap-2">
                       <button
-                        className="bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded"
+                        className="border border-slate-300 bg-white/65 text-slate-800 px-3 py-1 rounded hover:border-transparent hover:bg-gradient-to-r hover:from-emerald-500 hover:to-cyan-500 hover:text-white transition-all"
                         onClick={() => updateItem(item.id)}
                       >
                         Save
                       </button>
                       <button
-                        className="bg-gray-400 hover:bg-gray-500 dark:bg-zinc-700 dark:hover:bg-zinc-600 text-white px-3 py-1 rounded"
+                        className="border border-slate-300 bg-white/65 dark:bg-zinc-700 dark:hover:bg-zinc-600 text-slate-800 dark:text-zinc-100 px-3 py-1 rounded hover:bg-slate-100 transition-all"
                         onClick={() => setEditingId(null)}
                       >
                         Cancel
@@ -238,7 +241,7 @@ export default function LostAndFound() {
                       </span>
                     </div>
 
-                    <p className="text-gray-600 dark:text-zinc-300 text-sm mb-3">{item.desc}</p>
+                    <p className="text-slate-600 dark:text-zinc-300 text-sm mb-3">{item.desc}</p>
 
                     <div className="flex justify-between">
                       {isOwner && (
@@ -269,7 +272,7 @@ export default function LostAndFound() {
 
                     {/* Comments Section */}
                     {activeItemId === item.id && (
-                      <div className="mt-3 border-t dark:border-zinc-700 pt-3 space-y-2">
+                      <div className="mt-3 border-t border-slate-200/70 dark:border-zinc-700 pt-3 space-y-2">
                         {(comments[item.id] || []).map((c) => (
                           <div key={c.id} className="text-sm text-gray-700 dark:text-zinc-300">
                             {c.comment}{" "}
@@ -281,14 +284,14 @@ export default function LostAndFound() {
 
                         <div className="flex mt-3 gap-2">
                           <input
-                            className="border dark:border-zinc-700 bg-gray-50 dark:bg-zinc-950 text-gray-900 dark:text-zinc-100 rounded px-2 py-1 flex-1 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="border border-slate-300 dark:border-zinc-700 bg-white/75 dark:bg-zinc-950 text-slate-900 dark:text-zinc-100 rounded px-2 py-1 flex-1 focus:outline-none focus:ring-2 focus:ring-cyan-500"
                             placeholder="Add a comment..."
                             value={newComment}
                             onChange={(e) => setNewComment(e.target.value)}
                             onClick={(e) => e.stopPropagation()} // prevent toggle
                           />
                           <button
-                            className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded"
+                            className="border border-slate-300 bg-white/65 text-slate-800 px-3 py-1 rounded hover:border-transparent hover:bg-gradient-to-r hover:from-cyan-500 hover:to-indigo-500 hover:text-white transition-all"
                             onClick={(e) => {
                               e.stopPropagation();
                               postComment(item.id);
@@ -307,14 +310,14 @@ export default function LostAndFound() {
         </div>
 
         {items.length === 0 && (
-          <p className="text-gray-500 dark:text-zinc-400 text-center py-10">No lost & found items.</p>
+          <p className="text-slate-500 dark:text-zinc-400 text-center py-10">No lost & found items.</p>
         )}
       </div>
 
       {/* Modal */}
       {showModal && (
         <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-          <div className="bg-white dark:bg-zinc-900 rounded-2xl shadow-xl w-full max-w-md p-6 space-y-4 border border-transparent dark:border-zinc-800">
+          <div className="bg-white/80 dark:bg-zinc-900/75 rounded-3xl shadow-xl w-full max-w-md p-6 space-y-4 border border-slate-200/80 dark:border-white/10 backdrop-blur-xl">
             {errorMsg && (
               <div className="bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 px-3 py-2 rounded-lg text-sm">
                 {errorMsg}
@@ -324,13 +327,13 @@ export default function LostAndFound() {
             <h2 className="text-2xl font-semibold text-gray-900 dark:text-zinc-100">Add New Item</h2>
 
             <input
-              className="border dark:border-zinc-700 bg-white dark:bg-zinc-950 text-gray-900 dark:text-zinc-100 rounded-lg px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="border border-slate-300 dark:border-zinc-700 bg-white/80 dark:bg-zinc-950 text-slate-900 dark:text-zinc-100 rounded-lg px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-cyan-500"
               placeholder="Item Name"
               value={newItem}
               onChange={(e) => setNewItem(e.target.value)}
             />
             <textarea
-              className="border dark:border-zinc-700 bg-white dark:bg-zinc-950 text-gray-900 dark:text-zinc-100 rounded-lg px-3 py-2 w-full min-h-[100px] resize-y focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="border border-slate-300 dark:border-zinc-700 bg-white/80 dark:bg-zinc-950 text-slate-900 dark:text-zinc-100 rounded-lg px-3 py-2 w-full min-h-[100px] resize-y focus:outline-none focus:ring-2 focus:ring-cyan-500"
               placeholder="Description"
               value={newDesc}
               onChange={(e) => setNewDesc(e.target.value)}
@@ -338,13 +341,13 @@ export default function LostAndFound() {
 
             <div className="flex justify-end gap-3 pt-2">
               <button
-                className="bg-gray-200 hover:bg-gray-300 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-gray-800 dark:text-zinc-200 px-5 py-2 rounded-lg"
+                className="border border-slate-300 bg-white/65 hover:bg-slate-100 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-slate-800 dark:text-zinc-200 px-5 py-2 rounded-lg transition-all"
                 onClick={() => setShowModal(false)}
               >
                 Cancel
               </button>
               <button
-                className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg"
+                className="border border-slate-300 bg-white/65 text-slate-800 px-5 py-2 rounded-lg hover:border-transparent hover:bg-gradient-to-r hover:from-cyan-500 hover:to-indigo-500 hover:text-white transition-all"
                 onClick={createItem}
               >
                 Add

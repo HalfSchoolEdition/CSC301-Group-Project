@@ -129,11 +129,14 @@ export default function Gym() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-100 dark:bg-zinc-950">
+    <div className="relative min-h-screen overflow-hidden bg-slate-100 dark:bg-[#0b0c10]">
+      <div className="pointer-events-none absolute -left-20 -top-16 h-80 w-80 rounded-full bg-white/70 blur-3xl dark:bg-white/10" />
+      <div className="pointer-events-none absolute right-0 top-24 h-96 w-96 rounded-full bg-slate-300/35 blur-3xl dark:bg-zinc-600/15" />
+      <div className="pointer-events-none absolute bottom-0 left-1/3 h-72 w-72 rounded-full bg-slate-200/40 blur-3xl dark:bg-zinc-500/10" />
       <Header />
-      <div className="mx-auto max-w-6xl space-y-6 p-6">
+      <div className="relative z-10 mx-auto max-w-6xl space-y-6 p-6">
         {/* Page Title */}
-        <h1 className="text-3xl font-bold text-gray-800 dark:text-zinc-100">
+        <h1 className="font-display text-3xl font-bold bg-gradient-to-r from-emerald-500 to-lime-500 bg-clip-text text-transparent">
           Gym Availability
         </h1>
         
@@ -160,7 +163,7 @@ export default function Gym() {
         )}
 
         {/* Projected Capactities */}
-        <div className="rounded-xl bg-white p-6 shadow dark:bg-zinc-900 dark:shadow-zinc-950/50">
+        <div className="rounded-3xl border border-slate-200/80 bg-white/70 p-6 shadow-sm backdrop-blur dark:border-white/10 dark:bg-zinc-900/60 dark:shadow-zinc-950/50">
           <h3 className="mb-4 text-lg font-semibold text-black dark:text-zinc-100">
             Current Projected Capacities
           </h3>
@@ -179,7 +182,7 @@ export default function Gym() {
 
                       setGraphData(data);
                     }}
-                    className="flex w-full items-center justify-between rounded-lg bg-gray-50 px-4 py-3 text-left transition hover:bg-gray-100 active:bg-gray-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 dark:active:bg-zinc-600"
+                    className="flex w-full items-center justify-between rounded-lg border border-slate-200/70 bg-white/75 px-4 py-3 text-left transition hover:border-cyan-300 hover:bg-white active:bg-slate-100 dark:border-white/10 dark:bg-zinc-800 dark:hover:bg-zinc-700 dark:active:bg-zinc-600"
                   >
                     <span className="text-sm font-medium text-black dark:text-zinc-100">
                       {name}

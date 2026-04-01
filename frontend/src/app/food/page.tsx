@@ -729,13 +729,16 @@ export default function FoodCourtPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-100 dark:bg-zinc-950">
+    <div className="relative min-h-screen overflow-hidden bg-slate-100 dark:bg-[#0b0c10]">
+      <div className="pointer-events-none absolute -left-20 -top-16 h-80 w-80 rounded-full bg-white/70 blur-3xl dark:bg-white/10" />
+      <div className="pointer-events-none absolute right-0 top-24 h-96 w-96 rounded-full bg-slate-300/35 blur-3xl dark:bg-zinc-600/15" />
+      <div className="pointer-events-none absolute bottom-0 left-1/3 h-72 w-72 rounded-full bg-slate-200/40 blur-3xl dark:bg-zinc-500/10" />
       <Header />
       
-      <div className="mx-auto max-w-4xl space-y-6 p-6">
+      <div className="relative z-10 mx-auto max-w-4xl space-y-6 p-6">
         
         {/* Page Title */}
-        <h1 className="text-3xl font-bold text-gray-800 dark:text-zinc-100">Campus Food</h1>
+        <h1 className="font-display pb-1 text-3xl leading-[1.28] font-bold bg-gradient-to-r from-amber-500 to-orange-500 bg-clip-text text-transparent">Campus Food</h1>
 
         {/* Selected Card (Popup/Detail View) */}
         {selectedRestaurant && (
@@ -765,27 +768,27 @@ export default function FoodCourtPage() {
           <div className="space-y-4">
             {/* Search */}
             <div>
-               <h3 className="mb-2 text-sm font-bold text-gray-700 dark:text-zinc-300">Restaurant Search:</h3>
+               <h3 className="mb-2 text-sm font-bold text-slate-700 dark:text-zinc-300">Restaurant Search:</h3>
                <div className="relative">
                  <input 
                    type="text" 
                    placeholder="Hinted search text..." 
-                   className="w-full rounded-lg border border-gray-300 bg-white py-2 pl-4 pr-10 text-gray-900 placeholder-gray-500 focus:outline-purple-500 dark:border-zinc-600 dark:bg-zinc-950 dark:text-zinc-100 dark:placeholder-zinc-500 dark:focus:outline-purple-400"
+                   className="w-full rounded-lg border border-slate-300 bg-white/75 py-2 pl-4 pr-10 text-slate-900 placeholder-slate-500 backdrop-blur focus:outline-cyan-500 dark:border-zinc-600 dark:bg-zinc-950/75 dark:text-zinc-100 dark:placeholder-zinc-500 dark:focus:outline-cyan-400"
                    value={searchQuery}
                    onChange={(e) => setSearchQuery(e.target.value)}
                  />
-                 <span className="absolute right-3 top-2.5 text-gray-400 dark:text-zinc-500">🔍</span>
+                 <span className="absolute right-3 top-2.5 text-slate-400 dark:text-zinc-500">🔍</span>
                </div>
             </div>
 
             {/* Filters */}
             <div>
-              <h3 className="mb-2 text-sm font-bold text-gray-700 dark:text-zinc-300">Filters:</h3>
+              <h3 className="mb-2 text-sm font-bold text-slate-700 dark:text-zinc-300">Filters:</h3>
               <div className="flex flex-wrap gap-2">
                 <button 
                   onClick={() => setActiveFilter(null)}
                   className={`rounded-full border px-3 py-1 text-xs transition ${
-                    activeFilter === null ? 'border-purple-600 bg-purple-600 text-white dark:border-purple-500 dark:bg-purple-500' : 'border-gray-200 bg-white text-gray-600 hover:border-purple-300 dark:border-zinc-600 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:border-purple-500'
+                      activeFilter === null ? 'border-transparent bg-gradient-to-r from-cyan-500 to-indigo-500 text-white' : 'border-slate-300 bg-white/70 text-slate-600 hover:border-cyan-300 dark:border-zinc-600 dark:bg-zinc-900/70 dark:text-zinc-300 dark:hover:border-cyan-500'
                   }`}
                 >
                   All
@@ -796,8 +799,8 @@ export default function FoodCourtPage() {
                     onClick={() => setActiveFilter(filter === activeFilter ? null : filter)}
                     className={`rounded-full border px-3 py-1 text-xs transition ${
                       activeFilter === filter 
-                        ? 'border-purple-300 bg-purple-100 text-purple-800 dark:border-purple-600 dark:bg-purple-950 dark:text-purple-200' 
-                        : 'border-gray-200 bg-white text-gray-600 hover:border-purple-300 dark:border-zinc-600 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:border-purple-500'
+                        ? 'border-transparent bg-gradient-to-r from-cyan-500/20 to-indigo-500/20 text-slate-800 dark:text-zinc-100' 
+                        : 'border-slate-300 bg-white/70 text-slate-600 hover:border-cyan-300 dark:border-zinc-600 dark:bg-zinc-900/70 dark:text-zinc-300 dark:hover:border-cyan-500'
                     }`}
                   >
                     {filter}
@@ -809,9 +812,9 @@ export default function FoodCourtPage() {
 
           {/* Right Column: Estimated Waiting Times List */}
           <div className="md:col-span-2">
-            <h3 className="mb-3 text-lg font-bold text-gray-800 dark:text-zinc-100">Estimated Waiting Times:</h3>
-            <div className="overflow-hidden rounded-xl bg-white shadow dark:bg-zinc-900 dark:shadow-zinc-950/50">
-              <ul className="divide-y divide-gray-100 dark:divide-zinc-800">
+            <h3 className="mb-3 text-lg font-bold text-slate-800 dark:text-zinc-100">Estimated Waiting Times:</h3>
+            <div className="overflow-hidden rounded-3xl border border-slate-200/80 bg-white/70 shadow-sm backdrop-blur dark:border-white/10 dark:bg-zinc-900/60 dark:shadow-zinc-950/50">
+              <ul className="divide-y divide-slate-200/70 dark:divide-zinc-800">
                 {filteredList.map((item) => {
                   const time = estimates[item.name] ?? item.waitTime;
                   return(
@@ -823,15 +826,15 @@ export default function FoodCourtPage() {
                           const data = await getFullDayReport(item.id);
                           setGraphData(data);
                         }}
-                        className={`flex w-full items-center justify-between px-6 py-4 text-left transition hover:bg-gray-50 dark:hover:bg-zinc-800 ${
-                          selectedId === item.id ? 'border-l-4 border-purple-500 bg-purple-50 dark:bg-purple-950/40' : ''
+                        className={`flex w-full items-center justify-between px-6 py-4 text-left transition hover:bg-white/80 dark:hover:bg-zinc-800 ${
+                          selectedId === item.id ? 'border-l-4 border-cyan-500 bg-cyan-50/60 dark:bg-cyan-950/20' : ''
                         }`}
                       >
                         <div className="flex items-center gap-3">
-                          <span className="text-xl text-gray-400 dark:text-zinc-500">✪</span> {/* Placeholder Icon */}
+                          <span className="text-xl text-slate-400 dark:text-zinc-500">✪</span> {/* Placeholder Icon */}
                           <div>
-                            <p className="font-semibold text-gray-800 dark:text-zinc-100">{item.name}</p>
-                            <p className="text-xs text-gray-400 dark:text-zinc-500">{item.building}</p>
+                            <p className="font-semibold text-slate-800 dark:text-zinc-100">{item.name}</p>
+                            <p className="text-xs text-slate-400 dark:text-zinc-500">{item.building}</p>
                           </div>
                         </div>
                         
@@ -846,7 +849,7 @@ export default function FoodCourtPage() {
                 })}
                 
                 {filteredList.length === 0 && (
-                  <li className="p-6 text-center text-gray-500 dark:text-zinc-400">
+                  <li className="p-6 text-center text-slate-500 dark:text-zinc-400">
                     No restaurants match your filters.
                   </li>
                 )}

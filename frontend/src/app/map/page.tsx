@@ -111,10 +111,7 @@ export default function MapPage() {
                     <div className="overflow-hidden rounded-[28px] border border-white/70 bg-white/80 p-6 shadow-xl shadow-slate-200/60 backdrop-blur dark:border-zinc-700/70 dark:bg-zinc-900/80 dark:shadow-black/30">
                         <div className="flex flex-wrap items-start justify-between gap-4">
                             <div>
-                                <p className="text-sm font-semibold uppercase tracking-[0.22em] text-rose-600 dark:text-rose-300">
-                                    SCRUM-53 scaffold
-                                </p>
-                                <h1 className="mt-3 text-3xl font-bold tracking-tight text-gray-900 dark:text-zinc-50">
+                                <h1 className="font-display mt-3 pb-1 text-3xl leading-[1.28] font-bold tracking-tight bg-gradient-to-r from-rose-500 to-red-500 bg-clip-text text-transparent">
                                     Interactive campus map
                                 </h1>
                                 <p className="mt-3 max-w-2xl text-sm leading-6 text-gray-600 dark:text-zinc-300">

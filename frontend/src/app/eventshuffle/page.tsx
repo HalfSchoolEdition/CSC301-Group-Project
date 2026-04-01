@@ -151,34 +151,34 @@ export default function EventShufflePage() {
   }, [monthDate]);
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-slate-100 text-slate-900 dark:bg-[#07070d] dark:text-zinc-100">
-      <div className="pointer-events-none absolute -left-20 -top-20 h-72 w-72 rounded-full bg-fuchsia-400/35 blur-3xl dark:bg-fuchsia-500/25" />
-      <div className="pointer-events-none absolute -right-24 top-28 h-80 w-80 rounded-full bg-cyan-400/30 blur-3xl dark:bg-cyan-400/20" />
-      <div className="pointer-events-none absolute bottom-0 left-1/3 h-64 w-64 rounded-full bg-orange-300/30 blur-3xl dark:bg-orange-400/20" />
+    <div className="relative min-h-screen overflow-hidden bg-slate-100 text-slate-900 dark:bg-[#0b0c10] dark:text-zinc-100">
+      <div className="pointer-events-none absolute -left-20 -top-20 h-72 w-72 rounded-full bg-white/70 blur-3xl dark:bg-white/10" />
+      <div className="pointer-events-none absolute -right-24 top-28 h-80 w-80 rounded-full bg-slate-300/35 blur-3xl dark:bg-zinc-600/15" />
+      <div className="pointer-events-none absolute bottom-0 left-1/3 h-64 w-64 rounded-full bg-slate-200/40 blur-3xl dark:bg-zinc-500/10" />
       <Header backHref="/events" backLabel="← Events Calendar" />
 
       <main className="relative z-10 mx-auto w-full max-w-6xl px-4 py-8 sm:px-6">
         <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
           <div>
-            <h1 className="bg-gradient-to-r from-fuchsia-600 via-cyan-600 to-orange-500 bg-clip-text text-3xl font-extrabold text-transparent dark:from-fuchsia-300 dark:via-cyan-300 dark:to-orange-300 sm:text-4xl">Event Shuffle</h1>
+            <h1 className="text-3xl font-extrabold text-slate-900 transition-all hover:bg-gradient-to-r hover:from-fuchsia-500 hover:via-cyan-500 hover:to-indigo-500 hover:bg-clip-text hover:text-transparent dark:text-zinc-100 sm:text-4xl">Event Shuffle</h1>
             <p className="mt-1 text-sm text-slate-600 dark:text-zinc-400">Random event discovery in a dark card flow.</p>
           </div>
 
           <div className="flex items-center gap-2">
-            <button onClick={prevMonth} className="rounded-xl border border-slate-300 bg-white/75 px-3 py-2 text-sm text-slate-700 backdrop-blur hover:bg-white dark:border-white/15 dark:bg-white/5 dark:text-zinc-200 dark:hover:bg-white/10">←</button>
+            <button onClick={prevMonth} className="rounded-xl border border-slate-300 bg-white/65 px-3 py-2 text-sm text-slate-700 backdrop-blur hover:border-transparent hover:bg-gradient-to-r hover:from-cyan-500 hover:to-indigo-500 hover:text-white transition-all dark:border-white/15 dark:bg-white/5 dark:text-zinc-200 dark:hover:bg-white/10">←</button>
             <span className="min-w-36 rounded-xl border border-slate-300 bg-white/75 px-3 py-2 text-center text-sm font-semibold text-slate-800 backdrop-blur dark:border-white/10 dark:bg-white/5 dark:text-zinc-100">{monthLabel}</span>
-            <button onClick={nextMonth} className="rounded-xl border border-slate-300 bg-white/75 px-3 py-2 text-sm text-slate-700 backdrop-blur hover:bg-white dark:border-white/15 dark:bg-white/5 dark:text-zinc-200 dark:hover:bg-white/10">→</button>
+            <button onClick={nextMonth} className="rounded-xl border border-slate-300 bg-white/65 px-3 py-2 text-sm text-slate-700 backdrop-blur hover:border-transparent hover:bg-gradient-to-r hover:from-cyan-500 hover:to-indigo-500 hover:text-white transition-all dark:border-white/15 dark:bg-white/5 dark:text-zinc-200 dark:hover:bg-white/10">→</button>
           </div>
         </div>
 
         <section className="grid gap-6 md:grid-cols-[1fr_320px]">
-          <div className="rounded-3xl border border-slate-200 bg-white/80 p-4 shadow-[0_16px_45px_rgba(15,23,42,0.15)] backdrop-blur-xl dark:border-white/10 dark:bg-zinc-900/60 dark:shadow-[0_20px_60px_rgba(0,0,0,0.45)] sm:p-6">
+          <div className="rounded-3xl border border-slate-200 bg-white/70 p-4 shadow-[0_16px_45px_rgba(15,23,42,0.12)] backdrop-blur-xl dark:border-white/10 dark:bg-zinc-900/55 dark:shadow-[0_20px_60px_rgba(0,0,0,0.45)] sm:p-6">
             {loading ? (
               <p className="py-20 text-center text-slate-500 dark:text-zinc-400">Loading events...</p>
             ) : currentEvent ? (
               <>
                 <article className="rounded-3xl border border-slate-200 bg-gradient-to-br from-white via-slate-50 to-slate-100 p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.85)] dark:border-white/10 dark:bg-gradient-to-br dark:from-[#17182a] dark:via-[#0f1020] dark:to-[#0b0c15] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] sm:p-6">
-                  <div className="mb-3 inline-block rounded-full bg-gradient-to-r from-fuchsia-500/80 to-cyan-500/80 px-3 py-1 text-xs font-semibold text-white">
+                  <div className="mb-3 inline-block rounded-full bg-slate-200/80 px-3 py-1 text-xs font-semibold text-slate-700 dark:bg-white/10 dark:text-zinc-200">
                     {currentEvent.club}
                   </div>
 
@@ -203,13 +203,13 @@ export default function EventShufflePage() {
                 <div className="mt-6 grid grid-cols-3 gap-3">
                   <button
                     onClick={() => handleChoice("no")}
-                    className="rounded-xl border border-white/10 bg-gradient-to-r from-rose-500 to-orange-500 px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-rose-900/30 transition hover:brightness-110"
+                    className="rounded-xl border border-slate-300 bg-white/65 px-4 py-3 text-sm font-semibold text-slate-800 transition-all hover:border-transparent hover:bg-gradient-to-r hover:from-rose-500 hover:to-orange-500 hover:text-white dark:border-white/15 dark:bg-white/5 dark:text-zinc-100"
                   >
                     No
                   </button>
                   <button
                     onClick={() => handleChoice("yes")}
-                    className="col-span-2 rounded-xl border border-white/10 bg-gradient-to-r from-cyan-500 via-sky-500 to-indigo-500 px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-cyan-900/30 transition hover:brightness-110"
+                    className="col-span-2 rounded-xl border border-slate-300 bg-white/65 px-4 py-3 text-sm font-semibold text-slate-800 transition-all hover:border-transparent hover:bg-gradient-to-r hover:from-cyan-500 hover:to-indigo-500 hover:text-white dark:border-white/15 dark:bg-white/5 dark:text-zinc-100"
                   >
                     Yes
                   </button>
@@ -222,7 +222,7 @@ export default function EventShufflePage() {
                   <button
                     onClick={resetDeck}
                     disabled={allEvents.length === 0}
-                    className="rounded-xl border border-white/10 bg-gradient-to-r from-fuchsia-500 to-violet-500 px-5 py-2 text-sm text-white transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-40"
+                    className="rounded-xl border border-slate-300 bg-white/65 px-5 py-2 text-sm text-slate-800 transition-all hover:border-transparent hover:bg-gradient-to-r hover:from-cyan-500 hover:to-indigo-500 hover:text-white disabled:cursor-not-allowed disabled:opacity-40 dark:border-white/15 dark:bg-white/5 dark:text-zinc-100"
                   >
                     Shuffle Again
                   </button>
@@ -231,7 +231,7 @@ export default function EventShufflePage() {
             )}
           </div>
 
-          <aside className="h-fit rounded-3xl border border-slate-200 bg-white/80 p-4 shadow-[0_16px_40px_rgba(15,23,42,0.12)] backdrop-blur-xl dark:border-white/10 dark:bg-zinc-900/60 dark:shadow-[0_20px_50px_rgba(0,0,0,0.35)] sm:p-6">
+          <aside className="h-fit rounded-3xl border border-slate-200 bg-white/70 p-4 shadow-[0_16px_40px_rgba(15,23,42,0.10)] backdrop-blur-xl dark:border-white/10 dark:bg-zinc-900/55 dark:shadow-[0_20px_50px_rgba(0,0,0,0.35)] sm:p-6">
             <h3 className="mb-4 text-lg font-semibold text-slate-900 dark:text-zinc-100">Confirmed Events</h3>
             {confirmedEvents.length === 0 ? (
               <p className="text-sm text-slate-600 dark:text-zinc-400">Your confirmed events will appear here after pressing Yes.</p>
@@ -241,10 +241,10 @@ export default function EventShufflePage() {
                   <button
                     key={event.id}
                     onClick={() => setSelectedConfirmedEvent(event)}
-                    className="w-full rounded-2xl border border-slate-200 bg-gradient-to-r from-emerald-100 to-cyan-100 p-3 text-left transition hover:from-emerald-200 hover:to-cyan-200 dark:border-white/10 dark:from-emerald-500/20 dark:to-cyan-500/20 dark:hover:from-emerald-500/30 dark:hover:to-cyan-500/30"
+                    className="w-full rounded-2xl border border-slate-200 bg-white/70 p-3 text-left transition hover:border-transparent hover:bg-gradient-to-r hover:from-emerald-500/20 hover:to-cyan-500/20 dark:border-white/10 dark:bg-white/5 dark:hover:from-emerald-500/30 dark:hover:to-cyan-500/30"
                   >
-                    <p className="font-semibold text-emerald-900 dark:text-emerald-100">{event.title}</p>
-                    <p className="mt-1 text-xs text-emerald-700 dark:text-emerald-300">{event.club}</p>
+                    <p className="font-semibold text-slate-900 dark:text-zinc-100">{event.title}</p>
+                    <p className="mt-1 text-xs text-slate-600 dark:text-zinc-300">{event.club}</p>
                   </button>
                 ))}
               </div>
@@ -283,7 +283,7 @@ export default function EventShufflePage() {
             <div className="mt-6 flex justify-end">
               <button
                 onClick={() => setSelectedConfirmedEvent(null)}
-                className="rounded-xl border border-white/10 bg-gradient-to-r from-fuchsia-500 to-violet-500 px-4 py-2 text-white transition hover:brightness-110"
+                className="rounded-xl border border-slate-300 bg-white/65 px-4 py-2 text-slate-800 transition-all hover:border-transparent hover:bg-gradient-to-r hover:from-cyan-500 hover:to-indigo-500 hover:text-white dark:border-white/15 dark:bg-white/5 dark:text-zinc-100"
               >
                 Close
               </button>
